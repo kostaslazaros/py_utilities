@@ -75,20 +75,6 @@ grnumber_map_xiliades = {
 }
 
 
-def split_triades(value: str) -> list:
-    length = len(value)
-    rest = length % 3
-    triades = (length // 3) + 1
-    if rest == 0:
-        triades -= 1
-    final = []
-    for i in range(triades):
-        start = -3 * i - 3
-        end = length - 3 * i
-        final.append(value[start:end])
-    return final
-
-
 ones = {
     0: "μηδέν",
     1000: "χίλια",
@@ -107,6 +93,20 @@ postfixes = {
     4: " τρισεκατομμύρια",
     5: " τετράκις εκατομμύρια",
 }
+
+
+def split_triades(value: str) -> list:
+    length = len(value)
+    rest = length % 3
+    triades = (length // 3) + 1
+    if rest == 0:
+        triades -= 1
+    final = []
+    for i in range(triades):
+        start = -3 * i - 3
+        end = length - 3 * i
+        final.append(value[start:end])
+    return final
 
 
 def get_floating_num(number: float) -> str:
