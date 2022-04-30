@@ -75,7 +75,7 @@ grnumber_map_xiliades = {
 }
 
 
-def split_triades(value: str) -> dict:
+def split_triades(value: str) -> list:
     length = len(value)
     rest = length % 3
     triades = (length // 3) + 1
@@ -109,7 +109,7 @@ postfixes = {
 }
 
 
-def get_floating_num(number):
+def get_floating_num(number: float) -> str:
     rounded_num = round(number, 2)
     number_parts = str(rounded_num).split(".")
     num_part1 = number_parts[0]
@@ -134,7 +134,7 @@ def get_floating_num(number):
         )
 
 
-def num2text_gr(number):
+def num2text_gr(number: int) -> str:
     if number in ones:
         return ones[number]
     num_str = str(number)
@@ -163,16 +163,17 @@ def conversion(tuple):
     return number2stringWrapper(num, idx) + postfixes[idx]
 
 
-def number2string10s(number, dic_map):
+def number2string10s(number: int, dic_map: dict) -> str:
     if number in dic_map:
         return dic_map[number]
     if number < 100:
         if number == 0:
             return "μηδέν"
         return dic_map[number // 10 * 10] + " " + dic_map[number % 10]
+    return ""
 
 
-def number2string100s(number, dic_map):
+def number2string100s(number: int, dic_map: dict) -> str:
     if number in dic_map:
         return dic_map[number]
     if number < 1000:
@@ -184,9 +185,10 @@ def number2string100s(number, dic_map):
                 + " "
                 + number2string10s(number % 100, dic_map)
             )
+    return ""
 
 
-def number2stringWrapper(number, idx):
+def number2stringWrapper(number: int, idx: int) -> str:
     grnumber_map = grnumber_map_basic
     if idx == 1:
         grnumber_map = grnumber_map_xiliades
@@ -196,6 +198,7 @@ def number2stringWrapper(number, idx):
         return number2string10s(number, grnumber_map)
     if number < 1000:
         return number2string100s(number, grnumber_map)
+    return ""
 
 
 if __name__ == "__main__":
