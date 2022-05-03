@@ -117,10 +117,11 @@ def get_floating_num(number: float) -> str:
     if len(num_part2) == 1:
         num_part2 = num_part2 + "0"
     if int(num_part2) == 0:
-        return num2text_gr(int(num_part1))
+        return num2text_gr(int(num_part1)) + " ευρώ"
     if num_part2 == "01":
         return (
             num2text_gr(int(num_part1))
+            + " ευρώ"
             + " και "
             + num2text_gr(int(num_part2))
             + " λεπτό"
@@ -128,6 +129,7 @@ def get_floating_num(number: float) -> str:
     else:
         return (
             num2text_gr(int(num_part1))
+            + " ευρώ"
             + " και "
             + num2text_gr(int(num_part2))
             + " λεπτά"
@@ -202,4 +204,4 @@ def number2stringWrapper(number: int, idx: int) -> str:
 
 
 if __name__ == "__main__":
-    print(get_floating_num(15543454.991))
+    print(get_floating_num(15543454.00))
